@@ -4,24 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <title>IRIS 예측 결과</title>
+    <style>
+        body {
+            background-color: #f1f3f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #495057;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+    </style>
 </head>
 <body>
-    <h1>IRIS</h1>
-    <p>꽃받침 길이: {{ sepal_length }} </p>
-    <p>꽃받침 폭: {{ sepal_width }} </p>
-    <p>꽃잎 길이: {{ petal_length }}</p>
-    <p>꽃잎 폭: {{ petal_width }}</p>
-    <p>예측된 품종: {{ species_prediction }}</p>
-    <p><a href="/">Home</a></p>
-    {% if species_prediction == 'setosa' %}
-        <img src="{% static 'img/setosa.png' %}" alt="Setosa Image">
-    {% elif species_prediction == 'versicolor' %}
-        <img src="{% static 'img/versicolor.png' %}" alt="Versicolor Image">
-    {% elif species_prediction == 'virginica' %}
-        <img src="{% static 'img/virginica.png' %}" alt="Virginica Image">
-    {% else %}
-        <p> No Image Available</p>
-    {% endif %}
+    <div class="card">
+        <h1>IRIS 예측 결과</h1>
+        <p>🌱 꽃받침 길이: {{ sepal_length }}</p>
+        <p>🌱 꽃받침 폭: {{ sepal_width }}</p>
+        <p>🌸 꽃잎 길이: {{ petal_length }}</p>
+        <p>🌸 꽃잎 폭: {{ petal_width }}</p>
+        <p><strong>🔍 예측된 품종:</strong> {{ species_prediction }}</p>
 
+        {% if species_prediction == 'setosa' %}
+            <img src="{% static 'img/setosa.png' %}" alt="Setosa Image">
+        {% elif species_prediction == 'versicolor' %}
+            <img src="{% static 'img/versicolor.png' %}" alt="Versicolor Image">
+        {% elif species_prediction == 'virginica' %}
+            <img src="{% static 'img/virginica.png' %}" alt="Virginica Image">
+        {% else %}
+            <p>No image available</p>
+        {% endif %}
+
+        <a href="/">🏠 Home으로 돌아가기</a>
+    </div>
 </body>
 </html>
